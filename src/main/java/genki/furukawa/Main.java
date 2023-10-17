@@ -5,7 +5,7 @@ import genki.furukawa.playground.task.MyBaseTask;
 
 public class Main {
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 21; i++) {
             TaskScheduler.addTask(new MyBaseTask(i));
         }
     }

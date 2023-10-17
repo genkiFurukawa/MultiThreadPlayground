@@ -1,5 +1,7 @@
 package genki.furukawa.playground.task;
 
+import genki.furukawa.playground.TaskScheduler;
+
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
@@ -16,21 +18,18 @@ public class MyBaseTask implements Runnable, ThreadFactory {
 
     @Override
     public void run() {
-        System.out.println("[START] id: " + id + "のタスクを実行");
-//        System.out.println(Thread.currentThread().getName()); // スレッド名を表示
-        sleep(id);
-        System.out.println("[END] id: " + id + "のタスクを実行");
+        sleep(2);
+        TaskScheduler.completeTask(id);
     }
 
     /**
-     * i秒間、処理を止める
+     * seconds秒間、処理を止める
      *
-     * @param i 止めたい秒数
+     * @param seconds 止めたい秒数
      */
-    private void sleep(int i) {
+    private void sleep(int seconds) {
         try {
-//            TimeUnit.SECONDS.sleep(i);
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(seconds);
         } catch (InterruptedException e) {
             // ignore
         }
